@@ -56,7 +56,7 @@ const PORT = process.env.PORT || 3000;
 app.use("/api/animals", animalsRouter);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the API!");
+  res.send("Welcome to the APIjjjjnjjn!");
 });
 
 app.listen(PORT, () => {
