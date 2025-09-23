@@ -1,42 +1,22 @@
-CREATE DATABASE IF NOT EXISTS animals_db;
-USE animals_db;
+CREATE DATABASE IF NOT EXISTS movies_db;
+USE movies_db;
 
+DROP TABLE IF EXISTS directors;
 
-DROP TABLE IF EXISTS animals;
-
-
-CREATE TABLE animals (
+CREATE TABLE directors (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  namn VARCHAR(255) NOT NULL,
-  färg VARCHAR(100) NOT NULL,
-  vikt INT NOT NULL COMMENT 'Vikt i kg',
-  kontinent VARCHAR(100) NOT NULL
+  name VARCHAR(255) NOT NULL,
+  birth_year INT,
+  nationality VARCHAR(100),
+  debut_year INT,
+  total_movies INT DEFAULT 0,
+  awards_won INT DEFAULT 0,
+  active BOOLEAN DEFAULT TRUE
 );
 
+INSERT INTO directors (name, birth_year, nationality, debut_year, total_movies, awards_won, active) VALUES
+  ('Steven Spielberg', 1946, 'USA', 1971, 33, 50, TRUE),
+  ('Christopher Nolan', 1970, 'UK', 1998, 11, 25, TRUE),
+  ('Quentin Tarantino', 1963, 'USA', 1992, 10, 20, TRUE),
+  ('Martin Scorsese', 1942, 'USA', 1967, 25, 70, TRUE);
 
-INSERT INTO animals (namn, färg, vikt, kontinent) VALUES
-  ('Lejon', 'Gul', 190, 'Afrika'),
-  ('Afrikansk elefant', 'Grå', 6000, 'Afrika'),
-  ('Giraff', 'Gul med bruna fläckar', 1200, 'Afrika'),
-  ('Zebra', 'Vit med svarta ränder', 300, 'Afrika'),
-  ('Gepard', 'Gul med svarta fläckar', 72, 'Afrika'),
- 
-  ('Tiger', 'Orange med svarta ränder', 220, 'Asien'),
-  ('Jättepanda', 'Vit och svart', 100, 'Asien'),
-  ('Orangutang', 'Rödbrun', 75, 'Asien'),
-  ('Konung kobra', 'Brun', 6, 'Asien'),
-  ('Snöleopard', 'Vit med svarta fläckar', 55, 'Asien'),
- 
-  ('Brunbjörn', 'Brun', 300, 'Europa'),
-  ('Varg', 'Grå', 45, 'Europa'),
-  ('Ren', 'Brun', 180, 'Europa'),
- 
-  ('Grizzlybjörn', 'Brun', 400, 'Nordamerika'),
-  ('Bisonoxe', 'Brun', 900, 'Nordamerika'),
-  ('Tvättbjörn', 'Grå och svart', 8, 'Nordamerika'),
- 
-  ('Jaguar', 'Gul med svarta fläckar', 95, 'Sydamerika'),
-  ('Llama', 'Vit', 130, 'Sydamerika'),
- 
-  ('Röd känguru', 'Rödbrun', 85, 'Australien'),
-  ('Kejsarpingvin', 'Svart och vit', 23, 'Antarktis');
