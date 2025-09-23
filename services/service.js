@@ -1,46 +1,20 @@
-import * as animalData from "../data/data.js";
+import * as directorData from "../data/data.js";
 
-// Business logic och data transformation
-export const getAllAnimals = async () => {
-  const animals = await animalData.findAll();
+export const getAllDirectors = async () => {
+  const directors = await directorData.findAll();
 
-  // Lägg till displayName för presentation
-  return animals.map((animal) => ({
-    ...animal,
-    displayName: `${animal.namn} från ${animal.kontinent}`,
-    weightCategory: categorizeWeight(animal.vikt),
+  return directors.map((d) => ({
+    ...d,
+    displayName: `${d.name} (${d.birth_year})`,
   }));
 };
 
-export const getAnimalById = async (id) => {
-  const animal = await animalData.findById(id);
-
-  if (!animal) {
-    return null;
-  }
+export const getDirectorById = async (id) => {
+  const director = await directorData.findById(id);
+  if (!director) return null;
 
   return {
-    ...animal,
-    displayName: `${animal.namn} från ${animal.kontinent}`,
-    weightCategory: categorizeWeight(animal.vikt),
+    ...director,
+    displayName: `${director.name} (${director.birth_year})`,
   };
-};
-
-export const getContinentStats = async () => {
-  const stats = await animalData.getStatsByContinent();
-  const total = stats.reduce((sum, stat) => sum + stat.antal, 0);
-
-  return {
-    data: stats,
-    total,
-    summary: `Animals distributed across ${stats.length} continents`,
-  };
-};
-
-// Helper function - pure function
-const categorizeWeight = (weight) => {
-  if (weight < 20) return "Small";
-  if (weight < 100) return "Medium";
-  if (weight < 500) return "Large";
-  return "Huge";
 };
