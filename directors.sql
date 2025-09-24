@@ -1,11 +1,9 @@
 CREATE DATABASE IF NOT EXISTS movies_db;
 USE movies_db;
 
--- Ta bort gamla tabeller i rätt ordning (movies först pga foreign key)
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS directors;
 
--- Tabell för directors
 CREATE TABLE directors (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
@@ -17,7 +15,6 @@ CREATE TABLE directors (
   active BOOLEAN DEFAULT TRUE
 );
 
--- Tabell för movies
 CREATE TABLE movies (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
