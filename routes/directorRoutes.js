@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { getAllDirectors, getDirectorById } from "../services/service.js";
+import {
+  getAllDirectors,
+  getDirectorById,
+} from "../services/directorService.js";
 
 const router = Router();
 

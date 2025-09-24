@@ -1,4 +1,4 @@
-import * as directorData from "../data/data.js";
+import * as directorData from "../data/directorData.js";
 
 export const getAllDirectors = async () => {
   const directors = await directorData.findAll();
