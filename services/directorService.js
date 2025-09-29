@@ -18,3 +18,19 @@ export const getDirectorById = async (id) => {
     displayName: `${director.name} (${director.birth_year})`,
   };
 };
+
+export const getTopDirectorsByMovies = async (count) => {
+  const directors = await directorData.findTopByMovies(count);
+  return directors.map((d) => ({
+    ...d,
+    displayName: `${d.name} (${d.total_movies} movies)`,
+  }));
+};
+
+export const getTopDirectorsByAwards = async (count) => {
+  const directors = await directorData.findTopByAwards(count);
+  return directors.map((d) => ({
+    ...d,
+    displayName: `${d.name} (${d.awards_won} awards)`,
+  }));
+};

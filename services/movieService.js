@@ -24,3 +24,27 @@ export const getMoviesByDirector = async (directorId) => {
     displayName: `${m.title} (${m.release_year})`,
   }));
 };
+
+export const getMoviesByGenre = async (genre) => {
+  const movies = await movieData.findByGenre(genre);
+  return movies.map((m) => ({
+    ...m,
+    displayName: `${m.title} (${m.release_year})`,
+  }));
+};
+
+export const getMoviesByYear = async (year) => {
+  const movies = await movieData.findByYear(year);
+  return movies.map((m) => ({
+    ...m,
+    displayName: `${m.title} (${m.release_year})`,
+  }));
+};
+
+export const getTopMovies = async (count) => {
+  const movies = await movieData.findTopMovies(count);
+  return movies.map((m) => ({
+    ...m,
+    displayName: `${m.title} (${m.release_year})`,
+  }));
+};
