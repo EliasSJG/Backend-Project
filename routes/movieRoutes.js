@@ -7,62 +7,57 @@ import {
   getMoviesByYear,
   getTopMovies,
 } from "../services/movieService.js";
+import { asyncHandler } from "../utils/dry-helper.js";
 
 const router = Router();
 
-router.get("/", async (req, res, next) => {
-  try {
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
     const movies = await getAllMovies();
     res.json(movies);
-  } catch (err) {
-    next(err);
-  }
-});
+  })
+);
 
-router.get("/director/:id", async (req, res, next) => {
-  try {
+router.get(
+  "/director/:id",
+  asyncHandler(async (req, res) => {
     const movies = await getMoviesByDirector(req.params.id);
     res.json(movies);
-  } catch (err) {
-    next(err);
-  }
-});
+  })
+);
 
-router.get("/genre/:genre", async (req, res, next) => {
-  try {
+router.get(
+  "/genre/:genre",
+  asyncHandler(async (req, res) => {
     const movies = await getMoviesByGenre(req.params.genre);
     res.json(movies);
-  } catch (err) {
-    next(err);
-  }
-});
+  })
+);
 
-router.get("/year/:year", async (req, res, next) => {
-  try {
+router.get(
+  "/year/:year",
+  asyncHandler(async (req, res) => {
     const movies = await getMoviesByYear(req.params.year);
     res.json(movies);
-  } catch (err) {
-    next(err);
-  }
-});
+  })
+);
 
-router.get("/top/:count", async (req, res, next) => {
-  try {
+router.get(
+  "/top/:count",
+  asyncHandler(async (req, res) => {
     const movies = await getTopMovies(req.params.count);
     res.json(movies);
-  } catch (err) {
-    next(err);
-  }
-});
+  })
+);
 
-router.get("/:id", async (req, res, next) => {
-  try {
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
     const movie = await getMovieById(req.params.id);
     if (!movie) return res.status(404).json({ error: "Movie not found" });
     res.json(movie);
-  } catch (err) {
-    next(err);
-  }
-});
+  })
+);
 
 export default router;
