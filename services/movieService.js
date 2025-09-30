@@ -1,6 +1,7 @@
 import * as movieData from "../data/movieData.js";
 import { withDisplayName } from "../utils/dry-helper.js";
 
+//movie service pratar med min data fil och använder datan och ändrar med att lägga till displayName med hjälp av funktionen från dry-helper.js
 export const getAllMovies = async () => {
   const movies = await movieData.findAll();
   return movies.map((m) => withDisplayName(m, "title", m.release_year));
