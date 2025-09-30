@@ -8,9 +8,15 @@ import {
   getTopMovies,
 } from "../services/movieService.js";
 import { asyncHandler } from "../utils/dry-helper.js";
+//Routes/url for movies
 
 const router = Router();
 
+//varje route har en asyncHandler som hanterar asynkrona anrop och fångar upp eventuella fel
+//sedan skickar den svaret från anropet som json så att vi kan se det på webbläsarern
+//avnänder funktierna från services filen
+
+// Get all movies
 router.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -19,6 +25,7 @@ router.get(
   })
 );
 
+// Get movies by director ID
 router.get(
   "/director/:id",
   asyncHandler(async (req, res) => {
@@ -27,6 +34,8 @@ router.get(
   })
 );
 
+// Get movies by genre
+
 router.get(
   "/genre/:genre",
   asyncHandler(async (req, res) => {
@@ -34,7 +43,7 @@ router.get(
     res.json(movies);
   })
 );
-
+// Get movies by year
 router.get(
   "/year/:year",
   asyncHandler(async (req, res) => {
@@ -42,7 +51,7 @@ router.get(
     res.json(movies);
   })
 );
-
+// Get top movies
 router.get(
   "/top/:count",
   asyncHandler(async (req, res) => {
@@ -50,7 +59,7 @@ router.get(
     res.json(movies);
   })
 );
-
+// Get movie by ID
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {

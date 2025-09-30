@@ -1,6 +1,7 @@
 import * as directorData from "../data/directorData.js";
 import { withDisplayName } from "../utils/dry-helper.js";
-
+import * as movieData from "../data/movieData.js";
+//director service pratar med min data fil och använder datan och ändrar med att lägga till displayName med hjälp av funktionen från dry-helper.js
 export const getAllDirectors = async () => {
   const directors = await directorData.findAll();
   return directors.map((d) => withDisplayName(d, "name", d.birth_year));
@@ -12,16 +13,26 @@ export const getDirectorById = async (id) => {
   return withDisplayName(director, "name", director.birth_year);
 };
 
-export const getTopDirectorsByMovies = async (count) => {
-  const directors = await directorData.findTopByMovies(count);
-  return directors.map((d) =>
-    withDisplayName(d, "name", `${d.total_movies} movies`)
-  );
-};
-
 export const getTopDirectorsByAwards = async (count) => {
   const directors = await directorData.findTopByAwards(count);
-  return directors.map((d) =>
-    withDisplayName(d, "name", `${d.awards_won} awards`)
+
+  const awardDirectors = await Promise.all(
+    directors.map(async (d) => {
+      const movies = await movieData.findByDirectorId(d.id);
+      return {
+        id: d.id,
+        name: d.name,
+        birthYear: d.birth_year,
+        awardsWon: d.awards_won,
+        totalMovies: movies.length,
+        movies: movies.map((m) => ({
+          id: m.id,
+          title: m.title,
+          year: m.release_year,
+        })),
+      };
+    })
   );
+
+  return awardDirectors;
 };

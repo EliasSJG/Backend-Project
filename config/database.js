@@ -1,10 +1,12 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 
+//laddar env
 dotenv.config();
 
 let connection;
 
+//skapar upp en connection till databasen
 export const getConnection = async () => {
   if (!connection) {
     connection = await mysql.createConnection({
