@@ -24,3 +24,7 @@ export const findByYear = async (year) =>
 //Hämtar top movies baserat på rating(speciferea antal movies)
 export const findTopMovies = async (count) =>
   query("SELECT * FROM movies ORDER BY rating DESC LIMIT ?", [count]);
+
+// Hämta genomsnittligt betyg för alla filmer
+export const findAverageRating = async () =>
+  (await query("SELECT AVG(rating) AS avgRating FROM movies"))[0];

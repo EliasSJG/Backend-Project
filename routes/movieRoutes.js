@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   getAllMovies,
+  getAverageRating,
   getMovieById,
   getMoviesByDirector,
   getMoviesByGenre,
@@ -56,6 +57,14 @@ router.get(
   "/top/:count",
   asyncHandler(async (req, res) => {
     const movies = await getTopMovies(req.params.count);
+    res.json(movies);
+  })
+);
+//get average rating for all movies
+router.get(
+  "/average-rating",
+  asyncHandler(async (req, res) => {
+    const movies = await getAverageRating(req.params.count);
     res.json(movies);
   })
 );

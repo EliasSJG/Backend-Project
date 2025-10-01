@@ -32,3 +32,8 @@ export const getTopMovies = async (count) => {
   const movies = await movieData.findTopMovies(count);
   return movies.map((m) => withDisplayName(m, "title", m.release_year));
 };
+
+export const getAverageRating = async () => {
+  const result = await movieData.findAverageRating();
+  return { averageRating: result.avgRating };
+};
