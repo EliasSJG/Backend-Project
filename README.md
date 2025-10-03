@@ -18,22 +18,22 @@ A backend application that lets you explore directors and their movies.
 
 ---
 
-## 📁 Project Folder Structure 
-│──📂config/ 
-│ ├── 📄database.js 
-│── 📂data/ 
-│ ├── 📄directorsData.js 
-│ ├── 📄movieData.js 
-│── 📂routes/ 
-│ ├── 📄directorsRoutes.js 
-│ ├── 📄movieRoutes.js 
-│── 📂services/ 
-│ ├── 📄directorsService.js 
-│ ├── 📄movieService.js 
-│── 📂 utils/ 
-│ ├── 📄dry-helper.js 
-│── 📄directors.sql 
-│── 📄server.js
+## 📁 Project Folder Structure
+│──📂config/
+│   ├── 📄database.js
+│──📂data/
+│   ├── 📄directorsData.js
+│   ├── 📄movieData.js
+│──📂routes/
+│   ├── 📄directorsRoutes.js
+│   ├── 📄movieRoutes.js
+│──📂services/
+│   ├── 📄directorsService.js
+│   ├── 📄movieService.js
+│──📂utils/
+│   ├── 📄dry-helper.js
+│──📄directors.sql
+│──📄server.js
 
 ---
 
