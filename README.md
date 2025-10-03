@@ -16,9 +16,8 @@ A backend application that lets you explore directors and their movies.
 - Express
 - MySQL2
 
-
-~~~
 ## 📁 Project Folder Structure
+```
 │──📂config/
 │   ├── 📄database.js
 │──📂data/
@@ -34,27 +33,30 @@ A backend application that lets you explore directors and their movies.
 │   ├── 📄dry-helper.js
 │──📄directors.sql
 │──📄server.js
+```
 
-~~~
 
 ## ⚙️ Installation
 
-1. **Clone the repository**  
-`git clone <repo-url>`  
-`cd project`
-
-2. **Install dependencies**  
-`npm install`
-
-3. **Create a `.env` file in the root with your database credentials**  
+1. **Clone the repository**
+```
+git clone <repo-url>
+cd project
+```
+3. **Install dependencies**
+```
+npm install
+```
+4. **Create a `.env` file in the root with your database credentials**
+```
 DB_HOST=localhost  
 DB_PORT=3306  
 DB_USER=root  
 DB_PASSWORD=yourpassword  
 DB_NAME=movies_db  
 PORT=3000  
-
-4. **Import the database**  
+```
+6. **Import the database**  
 Run the SQL script `directors.sql` to create the necessary tables (`movies` and `directors`).
 
 ---
