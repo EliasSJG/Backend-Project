@@ -17,7 +17,7 @@ A backend application that lets you explore directors and their movies.
 - MySQL2
 
 
-```
+~~~
 ## 📁 Project Folder Structure
 │──📂config/
 │   ├── 📄database.js
@@ -35,7 +35,7 @@ A backend application that lets you explore directors and their movies.
 │──📄directors.sql
 │──📄server.js
 
-```
+~~~
 
 ## ⚙️ Installation
 
