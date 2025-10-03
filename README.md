@@ -40,7 +40,7 @@ A backend application that lets you explore directors and their movies.
 
 1. **Clone the repository**
 ```
-git clone <repo-url>
+git clone https://github.com/EliasSJG/DirectorsWorld.git
 cd project
 ```
 3. **Install dependencies**
